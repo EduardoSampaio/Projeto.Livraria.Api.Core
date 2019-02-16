@@ -1,0 +1,6 @@
+{
+  "Evolve.ConnectionString": "Server=localhost;DataBase=Treino;Uid=root;Pwd=1234",
+  "Evolve.Driver": "MySql.Data",
+  "Evolve.Locations": "db",
+  "Evolve.Command": "migrate"
+}
