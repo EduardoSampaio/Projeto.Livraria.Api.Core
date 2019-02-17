@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Versioning;
@@ -32,6 +33,10 @@ namespace Projeto.Livaria.Api
 
             InitializeDependencyInjection(services);
 
+            services.AddAutoMapper();
+
+            services.AddResponseCompression();
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new Info { Title = "Api Livros", Version = "v1" });
@@ -47,8 +52,6 @@ namespace Projeto.Livaria.Api
             services.AddDbContext<MySqlContext>(opt => opt.UseMySQL(connection));
 
             services.AddScoped(typeof(IRepositorio<,>), typeof(Repositorio<,>));
-            services.AddScoped<IUsuarioRepositorio, UsuarioRepositorio>();
-            services.AddScoped<IPerfilRepositorio, PerfilRepositorio>();
             services.AddScoped<ILivroRepositorio, LivroRepositorio>();      
         }
 
@@ -68,6 +71,15 @@ namespace Projeto.Livaria.Api
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "Api Livros v1");
             });
 
+            app.UseCors(c =>
+            {
+                c.AllowAnyHeader();
+                c.AllowAnyMethod();
+                c.AllowAnyOrigin();
+            });
+
+            app.UseResponseCompression();
+            app.UseHttpsRedirection();
             app.UseMvc();
         }
 

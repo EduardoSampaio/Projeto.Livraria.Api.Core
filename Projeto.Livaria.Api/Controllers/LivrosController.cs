@@ -1,7 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
+using Projeto.Livaria.Api.Models;
 using Projeto.Livraria.Dados.Interfaces;
 using Projeto.Livraria.Entidades;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Projeto.Livaria.Api.Controllers
 {
@@ -12,37 +17,57 @@ namespace Projeto.Livaria.Api.Controllers
     {
 
         private readonly ILivroRepositorio _repo;
+        private readonly IMapper _mapper;
+        private readonly ILogger _logger;
 
-        public LivrosController(ILivroRepositorio repo)
+        public LivrosController(ILivroRepositorio repo,IMapper mapper,ILogger<LivrosController> logger)
         {
             _repo = repo;
+            _mapper = mapper;
+            _logger = logger;
         }
 
         [HttpGet]
         public IActionResult FindAll()
         {
             var livros = _repo.GetAll();
-            return Ok(livros);
+            var model = _mapper.Map<List<LivroModel>>(livros);
+            _logger.LogInformation("Response: ", model);
+
+            return Ok(model);
         }
 
         [HttpGet("{id}")]
         public IActionResult FindById(int id)
         {
-            var usuario = _repo.Find(id);
-            return Ok(usuario);
+          
+            var livro = _repo.Find(id);
+            var model = _mapper.Map<LivroModel>(livro);
+            _logger.LogInformation("Response: ",model);
+            return Ok(model);
         }
 
         [HttpPost]
-        public IActionResult Save([FromBody] Livro livro)
+        public IActionResult Save([FromBody] LivroModelCadastrar model)
         {
+            if (!ModelState.IsValid)        
+                return BadRequest();
+            
+
             try
             {
-                _repo.Add(livro);
+               
+                var entidade = _mapper.Map<Livro>(model);
+                _repo.Add(entidade);
                 _repo.SaveChanges();
-                return Created("", livro);
+
+                _logger.LogInformation("Salvo com sucesso!");
+
+                return Created("", model);
             }
             catch (Exception ex)
             {
+                _logger.LogCritical("Erro ao Salvar");
                 return BadRequest(ex.Message);
             }
 
@@ -50,23 +75,28 @@ namespace Projeto.Livaria.Api.Controllers
 
 
         [HttpPut("{id}")]
-        public IActionResult Update(int id, [FromBody]   Livro livro)
+        public IActionResult Update(int id, [FromBody]   LivroModel model)
         {
             try
             {
                 var entidade = _repo.Find(id);
                 if (entidade == null)
                 {
+                    _logger.LogCritical("Objeto Não Encontrado");
                     return NotFound();
                 }
 
-                _repo.Update(livro);
+                entidade = _mapper.Map<Livro>(model);
+
+                _repo.Update(entidade);
                 _repo.SaveChanges();
+                _logger.LogInformation("Atualizado com sucesso !");
                 return NoContent();
 
             }
             catch (Exception ex)
             {
+                _logger.LogCritical("Erro ao Atualizar");
                 return BadRequest(ex.Message);
             }
 
@@ -81,16 +111,19 @@ namespace Projeto.Livaria.Api.Controllers
                 var entidade = _repo.Find(id);
                 if (entidade == null)
                 {
+                    _logger.LogCritical("Objeto Não Encontrado");
                     return NotFound();
                 }
 
                 _repo.Delete(id);
                 _repo.SaveChanges();
+                _logger.LogInformation("Deletado com sucesso !");
                 return NoContent();
 
             }
             catch (Exception ex)
             {
+                _logger.LogCritical("Erro ao Deletar");
                 return BadRequest(ex.Message);
             }
         }
