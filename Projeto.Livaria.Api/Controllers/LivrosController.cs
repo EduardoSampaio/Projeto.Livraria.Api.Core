@@ -1,12 +1,14 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Projeto.Livaria.Api.Filter;
 using Projeto.Livaria.Api.Models;
 using Projeto.Livraria.Dados.Interfaces;
 using Projeto.Livraria.Entidades;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 
 namespace Projeto.Livaria.Api.Controllers
 {
@@ -28,32 +30,48 @@ namespace Projeto.Livaria.Api.Controllers
         }
 
         [HttpGet]
-        public IActionResult FindAll()
+        public ResponseHandler FindAll()
         {
             var livros = _repo.GetAll();
             var model = _mapper.Map<List<LivroModel>>(livros);
             _logger.LogInformation("Response: ", model);
 
-            return Ok(model);
+            return ResponseHandler.BuildResponse(model, "v1", DateTime.Now, HttpStatusCode.OK, HttpContext.Response);
         }
 
         [HttpGet("{id}")]
-        public IActionResult FindById(int id)
+        public ResponseHandler FindById(int id)
         {
           
             var livro = _repo.Find(id);
+            if (livro == null) {
+                _logger.LogInformation("Objeto Não encontrado");
+                return ResponseHandler.BuildResponse("v1", "Objeto Não encontrado", DateTime.Now, HttpStatusCode.NotFound, HttpContext.Response);
+            }
             var model = _mapper.Map<LivroModel>(livro);
             _logger.LogInformation("Response: ",model);
-            return Ok(model);
+
+
+            return ResponseHandler.BuildResponse(model, "v1", DateTime.Now, HttpStatusCode.OK, HttpContext.Response);
         }
 
         [HttpPost]
-        public IActionResult Save([FromBody] LivroModelCadastrar model)
+        [ValidateModel]
+        public ResponseHandler Save([FromBody] LivroModel model)
         {
-            if (!ModelState.IsValid)        
-                return BadRequest();
-            
+            if (!ModelState.IsValid)
+            {
+                _logger.LogInformation("Erro na validação");
+                var errorList = ModelState
+                                .Where(x => x.Value.Errors.Count > 0)
+                                .ToDictionary(
+                                    kvp => kvp.Key,
+                                    kvp => kvp.Value.Errors.Select(e => e.ErrorMessage).ToArray()
+                                );
 
+                return ResponseHandler.BuildResponse("v1", DateTime.Now, HttpStatusCode.NotFound, errorList, HttpContext.Response);
+            }
+    
             try
             {
                
@@ -63,12 +81,12 @@ namespace Projeto.Livaria.Api.Controllers
 
                 _logger.LogInformation("Salvo com sucesso!");
 
-                return Created("", model);
+                return ResponseHandler.BuildResponse(model, "v1", DateTime.Now, HttpStatusCode.Created, HttpContext.Response);
             }
             catch (Exception ex)
             {
                 _logger.LogCritical("Erro ao Salvar");
-                return BadRequest(ex.Message);
+                return ResponseHandler.BuildResponse("v1", $"Erro ao Salvar exception: {ex.Message} ", DateTime.Now, HttpStatusCode.NotFound, HttpContext.Response);
             }
 
         }

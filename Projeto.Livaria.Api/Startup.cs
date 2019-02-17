@@ -37,6 +37,12 @@ namespace Projeto.Livaria.Api
 
             services.AddResponseCompression();
 
+            services.AddMvc().AddJsonOptions(options => {
+                options.SerializerSettings.NullValueHandling =
+                       Newtonsoft.Json.NullValueHandling.Ignore;
+            });
+
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new Info { Title = "Api Livros", Version = "v1" });
