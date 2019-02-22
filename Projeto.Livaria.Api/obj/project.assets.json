@@ -2,6 +2,186 @@
   "version": 3,
   "targets": {
     ".NETCoreApp,Version=v2.1": {
+      "App.Metrics.AspNetCore.Health/2.1.0": {
+        "type": "package",
+        "dependencies": {
+          "App.Metrics.AspNetCore.Health.Endpoints": "2.1.0",
+          "App.Metrics.Health": "2.1.0",
+          "App.Metrics.Health.Extensions.Hosting": "3.0.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/App.Metrics.AspNetCore.Health.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/App.Metrics.AspNetCore.Health.dll": {}
+        }
+      },
+      "App.Metrics.AspNetCore.Health.Core/2.1.0": {
+        "type": "package",
+        "dependencies": {
+          "App.Metrics.Health.Core": "2.1.0",
+          "App.Metrics.Health.Extensions.Configuration": "3.0.0",
+          "App.Metrics.Health.Extensions.DependencyInjection": "3.0.0",
+          "Microsoft.AspNetCore.Http.Extensions": "2.1.1",
+          "Microsoft.Extensions.Logging.Abstractions": "2.1.1",
+          "Microsoft.Extensions.Options.ConfigurationExtensions": "2.1.1"
+        },
+        "compile": {
+          "lib/netstandard2.0/App.Metrics.AspNetCore.Health.Core.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/App.Metrics.AspNetCore.Health.Core.dll": {}
+        }
+      },
+      "App.Metrics.AspNetCore.Health.Endpoints/2.1.0": {
+        "type": "package",
+        "dependencies": {
+          "App.Metrics.AspNetCore.Health.Hosting": "2.1.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/App.Metrics.AspNetCore.Health.Endpoints.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/App.Metrics.AspNetCore.Health.Endpoints.dll": {}
+        }
+      },
+      "App.Metrics.AspNetCore.Health.Hosting/2.1.0": {
+        "type": "package",
+        "dependencies": {
+          "App.Metrics.AspNetCore.Health.Core": "2.1.0",
+          "Microsoft.AspNetCore.Hosting.Abstractions": "2.1.1"
+        },
+        "compile": {
+          "lib/netstandard2.0/App.Metrics.AspNetCore.Health.Hosting.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/App.Metrics.AspNetCore.Health.Hosting.dll": {}
+        }
+      },
+      "App.Metrics.Concurrency/2.0.1": {
+        "type": "package",
+        "dependencies": {
+          "NETStandard.Library": "1.6.1"
+        },
+        "compile": {
+          "lib/netstandard1.1/App.Metrics.Concurrency.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.1/App.Metrics.Concurrency.dll": {}
+        }
+      },
+      "App.Metrics.Health/2.1.0": {
+        "type": "package",
+        "dependencies": {
+          "App.Metrics.Health.Core": "2.1.0",
+          "App.Metrics.Health.Formatters.Ascii": "2.1.0",
+          "App.Metrics.Health.Formatters.Json": "2.1.0",
+          "NETStandard.Library": "1.6.1"
+        },
+        "compile": {
+          "lib/netstandard1.6/App.Metrics.Health.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.6/App.Metrics.Health.dll": {}
+        }
+      },
+      "App.Metrics.Health.Abstractions/2.1.0": {
+        "type": "package",
+        "dependencies": {
+          "App.Metrics.Concurrency": "2.0.1",
+          "Microsoft.CSharp": "4.5.0",
+          "NETStandard.Library": "1.6.1",
+          "System.Threading.Tasks.Extensions": "4.5.1",
+          "System.ValueTuple": "4.5.0"
+        },
+        "compile": {
+          "lib/netstandard1.6/App.Metrics.Health.Abstractions.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.6/App.Metrics.Health.Abstractions.dll": {}
+        }
+      },
+      "App.Metrics.Health.Core/2.1.0": {
+        "type": "package",
+        "dependencies": {
+          "App.Metrics.Health.Abstractions": "2.1.0",
+          "App.Metrics.Health.Formatters.Ascii": "2.1.0",
+          "NETStandard.Library": "1.6.1"
+        },
+        "compile": {
+          "lib/netstandard1.6/App.Metrics.Health.Core.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.6/App.Metrics.Health.Core.dll": {}
+        }
+      },
+      "App.Metrics.Health.Extensions.Configuration/3.0.0": {
+        "type": "package",
+        "dependencies": {
+          "App.Metrics.Health": "2.1.0",
+          "Microsoft.Extensions.Configuration.Binder": "2.1.1"
+        },
+        "compile": {
+          "lib/netstandard2.0/App.Metrics.Health.Extensions.Configuration.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/App.Metrics.Health.Extensions.Configuration.dll": {}
+        }
+      },
+      "App.Metrics.Health.Extensions.DependencyInjection/3.0.0": {
+        "type": "package",
+        "dependencies": {
+          "App.Metrics.Health": "2.1.0",
+          "Microsoft.Extensions.DependencyInjection": "2.1.1",
+          "Microsoft.Extensions.DependencyModel": "2.1.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/App.Metrics.Health.Extensions.DependencyInjection.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/App.Metrics.Health.Extensions.DependencyInjection.dll": {}
+        }
+      },
+      "App.Metrics.Health.Extensions.Hosting/3.0.0": {
+        "type": "package",
+        "dependencies": {
+          "App.Metrics.Health.Core": "2.1.0",
+          "Microsoft.Extensions.Hosting.Abstractions": "2.1.1"
+        },
+        "compile": {
+          "lib/netstandard2.0/App.Metrics.Health.Extensions.Hosting.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/App.Metrics.Health.Extensions.Hosting.dll": {}
+        }
+      },
+      "App.Metrics.Health.Formatters.Ascii/2.1.0": {
+        "type": "package",
+        "dependencies": {
+          "App.Metrics.Health.Abstractions": "2.1.0",
+          "NETStandard.Library": "1.6.1"
+        },
+        "compile": {
+          "lib/netstandard1.6/App.Metrics.Health.Formatters.Ascii.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.6/App.Metrics.Health.Formatters.Ascii.dll": {}
+        }
+      },
+      "App.Metrics.Health.Formatters.Json/2.1.0": {
+        "type": "package",
+        "dependencies": {
+          "App.Metrics.Health.Abstractions": "2.1.0",
+          "NETStandard.Library": "1.6.1",
+          "Newtonsoft.Json": "12.0.1"
+        },
+        "compile": {
+          "lib/netstandard1.6/App.Metrics.Health.Formatters.Json.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.6/App.Metrics.Health.Formatters.Json.dll": {}
+        }
+      },
       "AutoMapper/8.0.0": {
         "type": "package",
         "dependencies": {
@@ -2795,7 +2975,7 @@
           "build/netstandard2.0/NETStandard.Library.targets": {}
         }
       },
-      "Newtonsoft.Json/11.0.2": {
+      "Newtonsoft.Json/12.0.1": {
         "type": "package",
         "compile": {
           "lib/netstandard2.0/Newtonsoft.Json.dll": {}
@@ -4588,18 +4768,13 @@
           "ref/netstandard1.2/System.Threading.Timer.dll": {}
         }
       },
-      "System.ValueTuple/4.3.0": {
+      "System.ValueTuple/4.5.0": {
         "type": "package",
-        "dependencies": {
-          "System.Collections": "4.3.0",
-          "System.Resources.ResourceManager": "4.3.0",
-          "System.Runtime": "4.3.0"
-        },
         "compile": {
-          "lib/netstandard1.0/System.ValueTuple.dll": {}
+          "ref/netcoreapp2.0/_._": {}
         },
         "runtime": {
-          "lib/netstandard1.0/System.ValueTuple.dll": {}
+          "lib/netcoreapp2.0/_._": {}
         }
       },
       "System.Xml.ReaderWriter/4.3.0": {
@@ -4767,6 +4942,199 @@
     }
   },
   "libraries": {
+    "App.Metrics.AspNetCore.Health/2.1.0": {
+      "sha512": "wVYwU5UPrSXosjbYfagmP85rssuBZt38CgEWz3SAePT6hNXLoqs9ets3U4HLc/iQ2hd+gMgpBP8LCiWtLvVZNQ==",
+      "type": "package",
+      "path": "app.metrics.aspnetcore.health/2.1.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "app.metrics.aspnetcore.health.2.1.0.nupkg.sha512",
+        "app.metrics.aspnetcore.health.nuspec",
+        "lib/netstandard2.0/App.Metrics.AspNetCore.Health.dll",
+        "lib/netstandard2.0/App.Metrics.AspNetCore.Health.xml"
+      ]
+    },
+    "App.Metrics.AspNetCore.Health.Core/2.1.0": {
+      "sha512": "EM7m6Q5q6fVuuXJo9nqGiutkzmxW2vtL/nXT0p1sNJGum1cNa1zGM1oL4VoQY5HDWy3HCepH6URaRcjtlIE04Q==",
+      "type": "package",
+      "path": "app.metrics.aspnetcore.health.core/2.1.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "app.metrics.aspnetcore.health.core.2.1.0.nupkg.sha512",
+        "app.metrics.aspnetcore.health.core.nuspec",
+        "lib/netstandard2.0/App.Metrics.AspNetCore.Health.Core.dll",
+        "lib/netstandard2.0/App.Metrics.AspNetCore.Health.Core.xml"
+      ]
+    },
+    "App.Metrics.AspNetCore.Health.Endpoints/2.1.0": {
+      "sha512": "mM5LZjjHWzfWDgtYqfN3QrH0V9k7RJU8R519uD3nKyinI8ArgHhG+/XVIcvn7dl1k0X/DDcwrsEm/VbtxdZSMw==",
+      "type": "package",
+      "path": "app.metrics.aspnetcore.health.endpoints/2.1.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "app.metrics.aspnetcore.health.endpoints.2.1.0.nupkg.sha512",
+        "app.metrics.aspnetcore.health.endpoints.nuspec",
+        "lib/netstandard2.0/App.Metrics.AspNetCore.Health.Endpoints.dll",
+        "lib/netstandard2.0/App.Metrics.AspNetCore.Health.Endpoints.xml"
+      ]
+    },
+    "App.Metrics.AspNetCore.Health.Hosting/2.1.0": {
+      "sha512": "saCk+IK6ICiO1Dcs58PMajs8UKumX788zUUK++gjEd1eYWUjHCNmMkPpXxPXdgr5wKfYHvVDO8xdv6h4de5BIg==",
+      "type": "package",
+      "path": "app.metrics.aspnetcore.health.hosting/2.1.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "app.metrics.aspnetcore.health.hosting.2.1.0.nupkg.sha512",
+        "app.metrics.aspnetcore.health.hosting.nuspec",
+        "lib/netstandard2.0/App.Metrics.AspNetCore.Health.Hosting.dll",
+        "lib/netstandard2.0/App.Metrics.AspNetCore.Health.Hosting.xml"
+      ]
+    },
+    "App.Metrics.Concurrency/2.0.1": {
+      "sha512": "XJ7eYseDig2/S61DygC8XCTckHHKNnGVGR9qTGjdeJ2x3LElKIQuScrhnEuxU3J6pqs0+UMjkATEeE7WsOf87w==",
+      "type": "package",
+      "path": "app.metrics.concurrency/2.0.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "app.metrics.concurrency.2.0.1.nupkg.sha512",
+        "app.metrics.concurrency.nuspec",
+        "lib/net45/App.Metrics.Concurrency.dll",
+        "lib/net45/App.Metrics.Concurrency.pdb",
+        "lib/net45/App.Metrics.Concurrency.xml",
+        "lib/netstandard1.1/App.Metrics.Concurrency.dll",
+        "lib/netstandard1.1/App.Metrics.Concurrency.pdb",
+        "lib/netstandard1.1/App.Metrics.Concurrency.xml"
+      ]
+    },
+    "App.Metrics.Health/2.1.0": {
+      "sha512": "TeHBu/60Nztquex4HsYHUbWR6Qr+d0gtfd/X7bTU/MpUJGzp5b98eKSDvFllQr0WjcoTF0dh+2MwVrlqWKVcQA==",
+      "type": "package",
+      "path": "app.metrics.health/2.1.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "app.metrics.health.2.1.0.nupkg.sha512",
+        "app.metrics.health.nuspec",
+        "lib/net452/App.Metrics.Health.dll",
+        "lib/net452/App.Metrics.Health.pdb",
+        "lib/net452/App.Metrics.Health.xml",
+        "lib/netstandard1.6/App.Metrics.Health.dll",
+        "lib/netstandard1.6/App.Metrics.Health.pdb",
+        "lib/netstandard1.6/App.Metrics.Health.xml"
+      ]
+    },
+    "App.Metrics.Health.Abstractions/2.1.0": {
+      "sha512": "2Hf+3MHgnrgsI23gtS1L/ud+SNfuTNNL8f+h9GMSs13abJbDROD572ocMbSEY6sP2oy/Qb4tG6xCu4QaYXxIbQ==",
+      "type": "package",
+      "path": "app.metrics.health.abstractions/2.1.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "app.metrics.health.abstractions.2.1.0.nupkg.sha512",
+        "app.metrics.health.abstractions.nuspec",
+        "lib/net452/App.Metrics.Health.Abstractions.dll",
+        "lib/net452/App.Metrics.Health.Abstractions.pdb",
+        "lib/net452/App.Metrics.Health.Abstractions.xml",
+        "lib/netstandard1.6/App.Metrics.Health.Abstractions.dll",
+        "lib/netstandard1.6/App.Metrics.Health.Abstractions.pdb",
+        "lib/netstandard1.6/App.Metrics.Health.Abstractions.xml"
+      ]
+    },
+    "App.Metrics.Health.Core/2.1.0": {
+      "sha512": "Qe5miPb83pe4VvGsKJyV319eN1/HTwGLEuyChr9WBbXzYrzxmwMxm2AuZsqA5l6H6+WoQZ3qm/Isy4WIw3SMzQ==",
+      "type": "package",
+      "path": "app.metrics.health.core/2.1.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "app.metrics.health.core.2.1.0.nupkg.sha512",
+        "app.metrics.health.core.nuspec",
+        "lib/net452/App.Metrics.Health.Core.dll",
+        "lib/net452/App.Metrics.Health.Core.pdb",
+        "lib/net452/App.Metrics.Health.Core.xml",
+        "lib/netstandard1.6/App.Metrics.Health.Core.dll",
+        "lib/netstandard1.6/App.Metrics.Health.Core.pdb",
+        "lib/netstandard1.6/App.Metrics.Health.Core.xml"
+      ]
+    },
+    "App.Metrics.Health.Extensions.Configuration/3.0.0": {
+      "sha512": "rdsOROAgF8zZtxGHoF8Qbuvm3Sfe/Lj4/kLQQrq6rjwIKgVO/IzMFbCosCdProGirJ/ooUlKBLXlN4uvGNRupw==",
+      "type": "package",
+      "path": "app.metrics.health.extensions.configuration/3.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "app.metrics.health.extensions.configuration.3.0.0.nupkg.sha512",
+        "app.metrics.health.extensions.configuration.nuspec",
+        "lib/netstandard2.0/App.Metrics.Health.Extensions.Configuration.dll",
+        "lib/netstandard2.0/App.Metrics.Health.Extensions.Configuration.xml"
+      ]
+    },
+    "App.Metrics.Health.Extensions.DependencyInjection/3.0.0": {
+      "sha512": "yEH2TAvPZJakqqbS6+q/hNcVzwGz9i3goRg7HY8CB3ZQZagh3N4KbKcrrvNuk4I5phRS1H7S0iOz2mwt9U2Z3Q==",
+      "type": "package",
+      "path": "app.metrics.health.extensions.dependencyinjection/3.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "app.metrics.health.extensions.dependencyinjection.3.0.0.nupkg.sha512",
+        "app.metrics.health.extensions.dependencyinjection.nuspec",
+        "lib/netstandard2.0/App.Metrics.Health.Extensions.DependencyInjection.dll",
+        "lib/netstandard2.0/App.Metrics.Health.Extensions.DependencyInjection.xml"
+      ]
+    },
+    "App.Metrics.Health.Extensions.Hosting/3.0.0": {
+      "sha512": "FkQbezWQX3ISZjv6VFOxe3/EF9i7EkIG+E6G/dH6DEVTqmHNIMIWQAn3R6shYAs15sgJ9KwPlmDG1LP5HfUdYw==",
+      "type": "package",
+      "path": "app.metrics.health.extensions.hosting/3.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "app.metrics.health.extensions.hosting.3.0.0.nupkg.sha512",
+        "app.metrics.health.extensions.hosting.nuspec",
+        "lib/netstandard2.0/App.Metrics.Health.Extensions.Hosting.dll",
+        "lib/netstandard2.0/App.Metrics.Health.Extensions.Hosting.xml"
+      ]
+    },
+    "App.Metrics.Health.Formatters.Ascii/2.1.0": {
+      "sha512": "qiUzTGGg3B5KrdrYuyB89BkPohxsMPNnWIr02TG4/rJUJ/QxnEbrmI75tjxfnW+oOObdf16AweH840ZcsGzpfQ==",
+      "type": "package",
+      "path": "app.metrics.health.formatters.ascii/2.1.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "app.metrics.health.formatters.ascii.2.1.0.nupkg.sha512",
+        "app.metrics.health.formatters.ascii.nuspec",
+        "lib/net452/App.Metrics.Health.Formatters.Ascii.dll",
+        "lib/net452/App.Metrics.Health.Formatters.Ascii.pdb",
+        "lib/net452/App.Metrics.Health.Formatters.Ascii.xml",
+        "lib/netstandard1.6/App.Metrics.Health.Formatters.Ascii.dll",
+        "lib/netstandard1.6/App.Metrics.Health.Formatters.Ascii.pdb",
+        "lib/netstandard1.6/App.Metrics.Health.Formatters.Ascii.xml"
+      ]
+    },
+    "App.Metrics.Health.Formatters.Json/2.1.0": {
+      "sha512": "sXE3fSAY288tSZdPRcFrpSEQn+/2JxypT1ZEXNpUuOe4b4wfxC0ZZNpD66CfHkD4eQ/fUP2VAj4Fn7owJ0RY9A==",
+      "type": "package",
+      "path": "app.metrics.health.formatters.json/2.1.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "app.metrics.health.formatters.json.2.1.0.nupkg.sha512",
+        "app.metrics.health.formatters.json.nuspec",
+        "lib/net452/App.Metrics.Health.Formatters.Json.dll",
+        "lib/net452/App.Metrics.Health.Formatters.Json.pdb",
+        "lib/net452/App.Metrics.Health.Formatters.Json.xml",
+        "lib/netstandard1.6/App.Metrics.Health.Formatters.Json.dll",
+        "lib/netstandard1.6/App.Metrics.Health.Formatters.Json.pdb",
+        "lib/netstandard1.6/App.Metrics.Health.Formatters.Json.xml"
+      ]
+    },
     "AutoMapper/8.0.0": {
       "sha512": "px8ZMtIq84dxciB29V+ZYOtsRLZP4JlflDDMW13LyeRdwsnIInzlcSHSxpWmVD6U3bbOl2FeLlgomnVtm0jvXw==",
       "type": "package",
@@ -4840,7 +5208,7 @@
       ]
     },
     "Microsoft.AspNet.WebApi.Client/5.2.6": {
-      "sha512": "AIgEc1up4pvH8kXy+eG1x4Qfqd6piAq3yk11pveCQXWNkkYoiKdflSmcJZuWcerdMcAaoF0xC/mWGoTW4vF4Dg==",
+      "sha512": "91JMnE9zdIDphG00qgRvl8ZwKEjqAbNlJdfXUoMiIWPfpYyH7fyCsTSj6/aynRdw/Qr/K70xC7QC6MOJ1vFBJQ==",
       "type": "package",
       "path": "microsoft.aspnet.webapi.client/5.2.6",
       "files": [
@@ -5092,7 +5460,7 @@
       ]
     },
     "Microsoft.AspNetCore.CookiePolicy/2.1.1": {
-      "sha512": "1VXR36rwz55yTA4z2S2C8/M2kkgMNMkiZi6YFyYBYSXKep3ekNgY75Y9zlkHJHiUiKXMj3nz1fHNBohODbBLZg==",
+      "sha512": "ErsK5e55vsYPeTYIimLdNqRUR8aTRZrzJgXTcRTwM5Hat8uTk8psmwZiD0xs/cUt24n6zvsKGhnv8gE/KEB4tQ==",
       "type": "package",
       "path": "microsoft.aspnetcore.cookiepolicy/2.1.1",
       "files": [
@@ -5105,7 +5473,7 @@
       ]
     },
     "Microsoft.AspNetCore.Cors/2.1.1": {
-      "sha512": "ajz3/gjo4OYDFId5nJUrBAYJhKW3sJrK5+dLJ3ynTuVyGwY5me3QICukzMeADSKNV+JapSrPKLXIythHwDrQjA==",
+      "sha512": "DdHBDCUbE6dvpRhrhnal+o92Z73HzXhpZkuyX+SNSgRU7CUgJE0F95BUXgYZg0Oj57rIU44fEtNVSIAeQYk4nw==",
       "type": "package",
       "path": "microsoft.aspnetcore.cors/2.1.1",
       "files": [
@@ -5198,7 +5566,7 @@
       ]
     },
     "Microsoft.AspNetCore.Diagnostics.Abstractions/2.1.1": {
-      "sha512": "rLn97UtnaXvD1E8K2UFQg5MBZ/D6KLuMZEEt47qkIIEsEQar84yIlR3HdDDF7ovJ/Bg546EyJXHxXvi7t6G7yw==",
+      "sha512": "hwWxICfj3y21OZRICVFEA/MmF8b8W52r7OfQkp23uDyfO7QrPPmOedLezmoQ2ydVZNE8d37YXryZcXjr/POG8Q==",
       "type": "package",
       "path": "microsoft.aspnetcore.diagnostics.abstractions/2.1.1",
       "files": [
@@ -5356,7 +5724,7 @@
       ]
     },
     "Microsoft.AspNetCore.Http.Features/2.1.1": {
-      "sha512": "cMnTXRH+8T7GLht6cXRCMmN1HaYfXti2WEUdXqMUuyJgi4oH9cmzW4nECSBkQjsCs5O06BphyDDDAsTW/zQmpg==",
+      "sha512": "PZUv3wvyax3Gi2DzpmtclX3cxsk3trXBzeGEiMDFsKoJ+EC0h2O8t0gwevYZwDuHpn+9ZGYJDuP5ub4Trh8MsA==",
       "type": "package",
       "path": "microsoft.aspnetcore.http.features/2.1.1",
       "files": [
@@ -6165,7 +6533,7 @@
       ]
     },
     "Microsoft.CodeAnalysis.Common/2.8.0": {
-      "sha512": "A2a4NejNvWVz+8FPXkZK/cd2j4/P3laHwpz56UU3fDcOAVu4Xb98T6FXGAIgqE/LzSVpHnn9Cgg7rhT59qsO8w==",
+      "sha512": "rMr3IN+DZq80ifRZnFr59j5KPbbUHaHOalfNBp4eIF0/tGiksHMTcGncHX56f2QvRembYUY3Qm1AHkOmEz2VZQ==",
       "type": "package",
       "path": "microsoft.codeanalysis.common/2.8.0",
       "files": [
@@ -6179,7 +6547,7 @@
       ]
     },
     "Microsoft.CodeAnalysis.CSharp/2.8.0": {
-      "sha512": "+GGCTxkBjf9lFEZhVOG4iEO5YkuWCO5q+kUF787NJ8Twy3EOyLrjtZ8K7q+kH/PnSjSkN0AvWwL2NQCmT1H6mA==",
+      "sha512": "lrINy11M50DAE58OYfLPmiDQ0CNpCYF6fnCiF1Q9pzhqRijfceEJ2s7ior5LP0DWP+YtvcYzMTstd2ujXqF4Vg==",
       "type": "package",
       "path": "microsoft.codeanalysis.csharp/2.8.0",
       "files": [
@@ -6818,7 +7186,7 @@
       ]
     },
     "Microsoft.Extensions.Logging/2.1.1": {
-      "sha512": "x4/RzeReQSIi4nVpOjXEySm/xUSr6lBjuecdYnlUboWxbLSm2j3vhFV5OLGRp3gfte3cRMdysMNa/wyZN0t/Tw==",
+      "sha512": "HBmIhyITdC2tGX9DCUNjNM21F3Ic7xs7P3K2iVINH4RrEDmN7YI4n0XZZpzmztTvDHLf/5PhCaznXHu9TlabBQ==",
       "type": "package",
       "path": "microsoft.extensions.logging/2.1.1",
       "files": [
@@ -7414,7 +7782,7 @@
       ]
     },
     "Microsoft.NETCore.Platforms/2.1.0": {
-      "sha512": "aSTPL94NloSiQVL5Len8wbjFKOnoAX/vOh3s3DF6g3c7GUUMLCDvnBhmA72M2iN2AedyA8hpr7m89kzSAKUnJQ==",
+      "sha512": "GmkKfoyerqmsHMn7OZj0AKpcBabD+GaafqphvX2Mw406IwiJRy1pKcKqdCfKJfYmkRyJ6+e+RaUylgdJoDa1jQ==",
       "type": "package",
       "path": "microsoft.netcore.platforms/2.1.0",
       "files": [
@@ -7725,33 +8093,42 @@
         "netstandard.library.nuspec"
       ]
     },
-    "Newtonsoft.Json/11.0.2": {
-      "sha512": "znZGbws7E4BA9jxNZ7FuiIRI3C9hrgatVQSTKhIYZYNOud4M5VfGlTYi6RdYO5sQrebFuF/g9UEV3hOxDMXF6Q==",
+    "Newtonsoft.Json/12.0.1": {
+      "sha512": "pBR3wCgYWZGiaZDYP+HHYnalVnPJlpP1q55qvVb+adrDHmFMDc1NAKio61xTwftK3Pw5h7TZJPJEEVMd6ty8rg==",
       "type": "package",
-      "path": "newtonsoft.json/11.0.2",
+      "path": "newtonsoft.json/12.0.1",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "LICENSE.md",
         "lib/net20/Newtonsoft.Json.dll",
+        "lib/net20/Newtonsoft.Json.pdb",
         "lib/net20/Newtonsoft.Json.xml",
         "lib/net35/Newtonsoft.Json.dll",
+        "lib/net35/Newtonsoft.Json.pdb",
         "lib/net35/Newtonsoft.Json.xml",
         "lib/net40/Newtonsoft.Json.dll",
+        "lib/net40/Newtonsoft.Json.pdb",
         "lib/net40/Newtonsoft.Json.xml",
         "lib/net45/Newtonsoft.Json.dll",
+        "lib/net45/Newtonsoft.Json.pdb",
         "lib/net45/Newtonsoft.Json.xml",
         "lib/netstandard1.0/Newtonsoft.Json.dll",
+        "lib/netstandard1.0/Newtonsoft.Json.pdb",
         "lib/netstandard1.0/Newtonsoft.Json.xml",
         "lib/netstandard1.3/Newtonsoft.Json.dll",
+        "lib/netstandard1.3/Newtonsoft.Json.pdb",
         "lib/netstandard1.3/Newtonsoft.Json.xml",
         "lib/netstandard2.0/Newtonsoft.Json.dll",
+        "lib/netstandard2.0/Newtonsoft.Json.pdb",
         "lib/netstandard2.0/Newtonsoft.Json.xml",
         "lib/portable-net40+sl5+win8+wp8+wpa81/Newtonsoft.Json.dll",
+        "lib/portable-net40+sl5+win8+wp8+wpa81/Newtonsoft.Json.pdb",
         "lib/portable-net40+sl5+win8+wp8+wpa81/Newtonsoft.Json.xml",
         "lib/portable-net45+win8+wp8+wpa81/Newtonsoft.Json.dll",
+        "lib/portable-net45+win8+wp8+wpa81/Newtonsoft.Json.pdb",
         "lib/portable-net45+win8+wp8+wpa81/Newtonsoft.Json.xml",
-        "newtonsoft.json.11.0.2.nupkg.sha512",
+        "newtonsoft.json.12.0.1.nupkg.sha512",
         "newtonsoft.json.nuspec"
       ]
     },
@@ -8164,7 +8541,7 @@
       ]
     },
     "System.Buffers/4.5.0": {
-      "sha512": "xpHYjjtyTEpzMwtSQBWdVc3dPjLdQtvyUg6fBlBqcLl1r2Y7gDG/W/enAYOB98nG3oD3Q153Y2FBO8JDWd+0Xw==",
+      "sha512": "09yL/QiPEDZI9JLg0R0OcGe/0ycFm69QN16DCvXkqkIorCC1Y2EKwk5KvSlfMmGse+LcKkD3H+Cra7fFkxHXEg==",
       "type": "package",
       "path": "system.buffers/4.5.0",
       "files": [
@@ -8327,7 +8704,7 @@
       ]
     },
     "System.Collections.Immutable/1.5.0": {
-      "sha512": "RGxi2aQoXgZ5ge0zxrKqI4PU9LrYYoLC+cnEnWXKsSduCOUhE1GEAAoTexUVT8RZOILQyy1B27HC8Xw/XLGzdQ==",
+      "sha512": "T5XGQlcHhEO75Qx38GGCUDPdk4n/7yrRmTgy4yczzJV8alPHaxPU55TBC2UFrkQ42bu34sZPfK0dU+nWZUOEJA==",
       "type": "package",
       "path": "system.collections.immutable/1.5.0",
       "files": [
@@ -8426,7 +8803,7 @@
       ]
     },
     "System.ComponentModel.Annotations/4.5.0": {
-      "sha512": "IjDa643EO77A4CL9dhxfZ6zzGu+pM8Ar0NYPRMN3TvDiga4uGDzFHOj/ArpyNxxKyO5IFT2LZ0rK3kUog7g3jA==",
+      "sha512": "f1ApUHGWq/lJC8PZE7JqbA3tiY7ZngZQO2mbYfCG0JlQVVUqqmVMAy0fMvAwEuG639M47ELdP6PQxc5OIo6i6A==",
       "type": "package",
       "path": "system.componentmodel.annotations/4.5.0",
       "files": [
@@ -8698,11 +9075,12 @@
       ]
     },
     "System.Diagnostics.Contracts/4.3.0": {
-      "sha512": "eelRRbnm+OloiQvp9CXS0ixjNQldjjkHO4iIkR5XH2VIP8sUB/SIpa1TdUW6/+HDcQ+MlhP3pNa1u5SbzYuWGA==",
+      "sha512": "hQjC+dSe1rBacyz3Qh4hooO4bWhG3/pzIL4bsMHPsLCWAQ5xfNYIuB7sU7pVZSV2v/p7DcrX6U7qAjZKJSaigg==",
       "type": "package",
       "path": "system.diagnostics.contracts/4.3.0",
       "files": [
         ".nupkg.metadata",
+        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/MonoAndroid10/_._",
@@ -9386,7 +9764,7 @@
       ]
     },
     "System.IdentityModel.Tokens.Jwt/5.2.0": {
-      "sha512": "2cY4A17XCEdohJ8BsyASM09ZYXVPJirdUudD5rETIuNhS7awKkncO1ifCAQHjb10PpdzLmebJgRI+NHEozSEwQ==",
+      "sha512": "VnyZBEbFfmIm9Ti3wKCkwcUuL9exJ/Zo0fkapCBvJwPX9H+YirZGVjLkRGbZTEXMKhvDQpN6lbtN9skDR3h14A==",
       "type": "package",
       "path": "system.identitymodel.tokens.jwt/5.2.0",
       "files": [
@@ -9906,7 +10284,7 @@
       ]
     },
     "System.Net.Http/4.3.0": {
-      "sha512": "Z1UfSF6dlpCdZdxh6LeoGlYH+q6ptG/iiIWgUUeKhE3DbQACmZkU7Sz2nOX0qdHjz72MOdYRbkSJ5Qwl6sZgvg==",
+      "sha512": "6BBc6BUa7pWFL7KUI/c8wb18IobTZHTtcQKksxJI5F9DRDShdtOvBEJzg5jJbFdTll7gRE+5yXUlq72ciLE+QQ==",
       "type": "package",
       "path": "system.net.http/4.3.0",
       "files": [
@@ -10084,7 +10462,7 @@
       ]
     },
     "System.Numerics.Vectors/4.5.0": {
-      "sha512": "MNcaYxUJvUcoXOa+jgKl/GDw/Mh+wMrxDjW4dre7qrp35LUGTjUBNtZsNjxsWX592ocdyqt1X5hMJB+5OStoYw==",
+      "sha512": "nATsBTD2CKr4AYN6eRszhX4sptImWmBJwB/U6XKCWWfnCcrTBw8XSCm3QA9gjppkHTr8OkXUY21MR91D3QZXsw==",
       "type": "package",
       "path": "system.numerics.vectors/4.5.0",
       "files": [
@@ -11258,7 +11636,7 @@
       ]
     },
     "System.Security.AccessControl/4.5.0": {
-      "sha512": "aVjTe36YkO8FzfNhMLoPEzv3gF9rphoW9ngFhG/MH4zzEPLx07sNrgCLwMP4Wx2leI6qarMrGv21OwQXYUKLmw==",
+      "sha512": "6RQtcT+TyDgLUFsAnmmdfRRGdLYKxSZGkSPOd052tvYFxOTMaQb6ANlwhGqZtNO52PosaCoXu7uatFneujAxmA==",
       "type": "package",
       "path": "system.security.accesscontrol/4.5.0",
       "files": [
@@ -11784,7 +12162,7 @@
       ]
     },
     "System.Security.Principal.Windows/4.5.0": {
-      "sha512": "WA9ETb/pY3BjnxKjBUHEgO59B7d/nnmjHFsqjJ2eDT780nD769CT1/bw2ia0Z6W7NqlcqokE6sKGKa6uw88XGA==",
+      "sha512": "hs2zF4tOQ3V4iQttVnLrnR/i8AOrrAgu2Gmp4/jNaE/+5hiZWDj20FK/m/OW3Itdi9XDvqf55WzHkiWYtOSUNg==",
       "type": "package",
       "path": "system.security.principal.windows/4.5.0",
       "files": [
@@ -12496,20 +12874,48 @@
         "system.threading.timer.nuspec"
       ]
     },
-    "System.ValueTuple/4.3.0": {
-      "sha512": "cNLEvBX3d6MMQRZe3SMFNukVbitDAEpVZO17qa0/2FHxZ7Y7PpFRpr6m2615XYM/tYYYf0B+WyHNujqIw8Luwg==",
+    "System.ValueTuple/4.5.0": {
+      "sha512": "+gDrtQRdEsUSdPZEEcVRmBvs6xJmqGBqRzEGMQm5XqHxWTkZe/PSuomdth5ZPcOb/Oh2kIu6NChoI1JQk649jg==",
       "type": "package",
-      "path": "system.valuetuple/4.3.0",
+      "path": "system.valuetuple/4.5.0",
       "files": [
         ".nupkg.metadata",
-        "ThirdPartyNotices.txt",
-        "dotnet_library_license.txt",
-        "lib/netstandard1.0/.xml",
+        ".signature.p7s",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/MonoAndroid10/_._",
+        "lib/MonoTouch10/_._",
+        "lib/net461/System.ValueTuple.dll",
+        "lib/net461/System.ValueTuple.xml",
+        "lib/net47/System.ValueTuple.dll",
+        "lib/net47/System.ValueTuple.xml",
+        "lib/netcoreapp2.0/_._",
         "lib/netstandard1.0/System.ValueTuple.dll",
-        "lib/portable-net40+sl4+win8+wp8/.xml",
+        "lib/netstandard1.0/System.ValueTuple.xml",
+        "lib/netstandard2.0/_._",
         "lib/portable-net40+sl4+win8+wp8/System.ValueTuple.dll",
-        "system.valuetuple.4.3.0.nupkg.sha512",
-        "system.valuetuple.nuspec"
+        "lib/portable-net40+sl4+win8+wp8/System.ValueTuple.xml",
+        "lib/uap10.0.16299/_._",
+        "lib/xamarinios10/_._",
+        "lib/xamarinmac20/_._",
+        "lib/xamarintvos10/_._",
+        "lib/xamarinwatchos10/_._",
+        "ref/MonoAndroid10/_._",
+        "ref/MonoTouch10/_._",
+        "ref/net461/System.ValueTuple.dll",
+        "ref/net47/System.ValueTuple.dll",
+        "ref/netcoreapp2.0/_._",
+        "ref/netstandard2.0/_._",
+        "ref/portable-net40+sl4+win8+wp8/System.ValueTuple.dll",
+        "ref/uap10.0.16299/_._",
+        "ref/xamarinios10/_._",
+        "ref/xamarinmac20/_._",
+        "ref/xamarintvos10/_._",
+        "ref/xamarinwatchos10/_._",
+        "system.valuetuple.4.5.0.nupkg.sha512",
+        "system.valuetuple.nuspec",
+        "useSharedDesignerContext.txt",
+        "version.txt"
       ]
     },
     "System.Xml.ReaderWriter/4.3.0": {
@@ -12849,6 +13255,7 @@
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.1": [
+      "App.Metrics.AspNetCore.Health >= 2.1.0",
       "AutoMapper >= 8.0.0",
       "AutoMapper.Extensions.Microsoft.DependencyInjection >= 6.0.0",
       "Evolve >= 1.9.0",
@@ -12907,6 +13314,10 @@
     "frameworks": {
       "netcoreapp2.1": {
         "dependencies": {
+          "App.Metrics.AspNetCore.Health": {
+            "target": "Package",
+            "version": "[2.1.0, )"
+          },
           "AutoMapper": {
             "target": "Package",
             "version": "[8.0.0, )"

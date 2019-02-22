@@ -1,4 +1,5 @@
-﻿using AutoMapper;
+﻿using App.Metrics.Health;
+using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -14,6 +15,7 @@ using Projeto.Livraria.Dados.Source;
 using Swashbuckle.AspNetCore.Swagger;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Projeto.Livaria.Api
 {
@@ -37,11 +39,20 @@ namespace Projeto.Livaria.Api
 
             services.AddResponseCompression();
 
-            services.AddMvc().AddJsonOptions(options => {
+            var metrics = AppMetricsHealth.CreateDefaultBuilder()
+                .HealthChecks.RegisterFromAssembly(services)
+                .BuildAndAddTo(services);
+
+            services.AddHealth(metrics);
+            services.AddHealthEndpoints();
+
+            services.AddMvc().AddJsonOptions(options =>
+            {
                 options.SerializerSettings.NullValueHandling =
                        Newtonsoft.Json.NullValueHandling.Ignore;
             });
 
+            ResponseValidationErrorHandler(services);
 
             services.AddSwaggerGen(c =>
             {
@@ -50,6 +61,24 @@ namespace Projeto.Livaria.Api
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddApiVersioning(o => o.ApiVersionReader = new HeaderApiVersionReader("api-version"));
+        }
+
+        private static void ResponseValidationErrorHandler(IServiceCollection services)
+        {
+            services.Configure<ApiBehaviorOptions>(options =>
+            {
+                options.InvalidModelStateResponseFactory = (context) =>
+                {
+                    var errors = context.ModelState.Values.SelectMany(x => x.Errors.Select(p => p.ErrorMessage)).ToList();
+                    var result = new
+                    {
+                        Code = 400,
+                        Message = "Erros de validação",
+                        Errors = errors
+                    };
+                    return new BadRequestObjectResult(result);
+                };
+            });
         }
 
         private void InitializeDependencyInjection(IServiceCollection services)
@@ -76,6 +105,8 @@ namespace Projeto.Livaria.Api
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "Api Livros v1");
             });
+
+            app.UseHealthAllEndpoints();
 
             app.UseCors(c =>
             {

@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using Projeto.Livaria.Api.Filter;
 using Projeto.Livaria.Api.Models;
 using Projeto.Livraria.Dados.Interfaces;
 using Projeto.Livraria.Entidades;
@@ -56,20 +55,11 @@ namespace Projeto.Livaria.Api.Controllers
         }
 
         [HttpPost]
-        [ValidateModel]
         public ResponseHandler Save([FromBody] LivroModel model)
         {
             if (!ModelState.IsValid)
             {
                 _logger.LogInformation("Erro na validação");
-                var errorList = ModelState
-                                .Where(x => x.Value.Errors.Count > 0)
-                                .ToDictionary(
-                                    kvp => kvp.Key,
-                                    kvp => kvp.Value.Errors.Select(e => e.ErrorMessage).ToArray()
-                                );
-
-                return ResponseHandler.BuildResponse("v1", DateTime.Now, HttpStatusCode.NotFound, errorList, HttpContext.Response);
             }
     
             try
