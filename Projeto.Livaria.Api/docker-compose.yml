@@ -1,0 +1,22 @@
+﻿version: '3.0'
+services: 
+  db:
+    image: mysql:5.7
+    environment:
+      MYSQL_RANDOM_ROOT_PASSWORD: 1234
+      MYSQL_DATABASE: treino
+      MYSQL_USER: root
+      MYSQL_PASSWORD: 1234
+    volumes:
+      - dbdata:/var/lib/mysql
+    restart: always    
+  projeto-livraria:
+   depends_on:
+      - db
+   build:
+      context: .
+   ports:
+       - "9090:9090"
+
+volumes:
+    dbdata:
