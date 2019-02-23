@@ -6,7 +6,6 @@ using Projeto.Livraria.Dados.Interfaces;
 using Projeto.Livraria.Entidades;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 
 namespace Projeto.Livaria.Api.Controllers
@@ -16,12 +15,11 @@ namespace Projeto.Livaria.Api.Controllers
     [ApiController]
     public class LivrosController : ControllerBase
     {
-
         private readonly ILivroRepositorio _repo;
         private readonly IMapper _mapper;
         private readonly ILogger _logger;
 
-        public LivrosController(ILivroRepositorio repo,IMapper mapper,ILogger<LivrosController> logger)
+        public LivrosController(ILivroRepositorio repo, IMapper mapper, ILogger<LivrosController> logger)
         {
             _repo = repo;
             _mapper = mapper;
@@ -41,15 +39,14 @@ namespace Projeto.Livaria.Api.Controllers
         [HttpGet("{id}")]
         public ResponseHandler FindById(int id)
         {
-          
             var livro = _repo.Find(id);
-            if (livro == null) {
+            if (livro == null)
+            {
                 _logger.LogInformation("Objeto Não encontrado");
                 return ResponseHandler.BuildResponse("v1", "Objeto Não encontrado", DateTime.Now, HttpStatusCode.NotFound, HttpContext.Response);
             }
             var model = _mapper.Map<LivroModel>(livro);
-            _logger.LogInformation("Response: ",model);
-
+            _logger.LogInformation("Response: ", model);
 
             return ResponseHandler.BuildResponse(model, "v1", DateTime.Now, HttpStatusCode.OK, HttpContext.Response);
         }
@@ -61,10 +58,9 @@ namespace Projeto.Livaria.Api.Controllers
             {
                 _logger.LogInformation("Erro na validação");
             }
-    
+
             try
             {
-               
                 var entidade = _mapper.Map<Livro>(model);
                 _repo.Add(entidade);
                 _repo.SaveChanges();
@@ -78,12 +74,10 @@ namespace Projeto.Livaria.Api.Controllers
                 _logger.LogCritical("Erro ao Salvar");
                 return ResponseHandler.BuildResponse("v1", $"Erro ao Salvar exception: {ex.Message} ", DateTime.Now, HttpStatusCode.NotFound, HttpContext.Response);
             }
-
         }
 
-
         [HttpPut("{id}")]
-        public IActionResult Update(int id, [FromBody]   LivroModel model)
+        public ResponseHandler Update(int id, [FromBody]   LivroModel model)
         {
             try
             {
@@ -91,7 +85,7 @@ namespace Projeto.Livaria.Api.Controllers
                 if (entidade == null)
                 {
                     _logger.LogCritical("Objeto Não Encontrado");
-                    return NotFound();
+                    return ResponseHandler.BuildResponse("v1", "Objeto Não encontrado", DateTime.Now, HttpStatusCode.NotFound, HttpContext.Response);
                 }
 
                 entidade = _mapper.Map<Livro>(model);
@@ -99,20 +93,17 @@ namespace Projeto.Livaria.Api.Controllers
                 _repo.Update(entidade);
                 _repo.SaveChanges();
                 _logger.LogInformation("Atualizado com sucesso !");
-                return NoContent();
-
+                return ResponseHandler.BuildResponse("v1", "Atualizado com sucesso!", DateTime.Now, HttpStatusCode.NoContent, HttpContext.Response);
             }
             catch (Exception ex)
             {
                 _logger.LogCritical("Erro ao Atualizar");
-                return BadRequest(ex.Message);
+                return ResponseHandler.BuildResponse("v1", $"Erro ao atualizar exception: {ex.Message} ", DateTime.Now, HttpStatusCode.NotFound, HttpContext.Response);
             }
-
-
         }
 
         [HttpDelete("{id}")]
-        public IActionResult Delete(int id)
+        public ResponseHandler Delete(int id)
         {
             try
             {
@@ -120,21 +111,19 @@ namespace Projeto.Livaria.Api.Controllers
                 if (entidade == null)
                 {
                     _logger.LogCritical("Objeto Não Encontrado");
-                    return NotFound();
+                    return ResponseHandler.BuildResponse("v1", "Objeto Não encontrado", DateTime.Now, HttpStatusCode.NotFound, HttpContext.Response);
                 }
 
                 _repo.Delete(id);
                 _repo.SaveChanges();
                 _logger.LogInformation("Deletado com sucesso !");
-                return NoContent();
-
+                return ResponseHandler.BuildResponse("v1", "Deletado com sucesso!", DateTime.Now, HttpStatusCode.NoContent, HttpContext.Response);
             }
             catch (Exception ex)
             {
                 _logger.LogCritical("Erro ao Deletar");
-                return BadRequest(ex.Message);
+                return ResponseHandler.BuildResponse("v1", $"Erro ao deletar exception: {ex.Message} ", DateTime.Now, HttpStatusCode.NotFound, HttpContext.Response); ;
             }
         }
     }
 }
-

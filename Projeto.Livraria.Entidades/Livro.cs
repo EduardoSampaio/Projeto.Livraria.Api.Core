@@ -14,7 +14,6 @@ namespace Projeto.Livraria.Entidades
 
         protected Livro()
         {
-
         }
 
         public virtual int Id { get; set; }

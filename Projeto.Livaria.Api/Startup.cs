@@ -32,7 +32,6 @@ namespace Projeto.Livaria.Api
 
         public void ConfigureServices(IServiceCollection services)
         {
-
             InitializeDependencyInjection(services);
 
             services.AddAutoMapper();
@@ -87,7 +86,7 @@ namespace Projeto.Livaria.Api
             services.AddDbContext<MySqlContext>(opt => opt.UseMySQL(connection));
 
             services.AddScoped(typeof(IRepositorio<,>), typeof(Repositorio<,>));
-            services.AddScoped<ILivroRepositorio, LivroRepositorio>();      
+            services.AddScoped<ILivroRepositorio, LivroRepositorio>();
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
@@ -117,7 +116,12 @@ namespace Projeto.Livaria.Api
 
             app.UseResponseCompression();
             app.UseHttpsRedirection();
-            app.UseMvc();
+            app.UseMvc(routes =>
+            {
+                routes.MapRoute(
+                    name: "DefaultApi",
+                    template: "{controller=Values}/{id?}");
+            });
         }
 
         private void InitializeDatabase()
@@ -129,7 +133,6 @@ namespace Projeto.Livaria.Api
                 {
                     Locations = new List<string> { "db/migrations" },
                     IsEraseDisabled = true
-
                 };
                 evolve.Migrate();
             }
@@ -138,7 +141,6 @@ namespace Projeto.Livaria.Api
                 _logger.LogCritical("Database migration failed.", ex);
                 throw;
             }
-
         }
     }
 }

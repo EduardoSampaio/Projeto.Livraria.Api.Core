@@ -7,7 +7,6 @@ namespace Projeto.Livraria.Dados.Source
     {
         public MySqlContext(DbContextOptions<MySqlContext> options) : base(options)
         {
-            
         }
 
         public DbSet<Livro> Livro { get; set; }

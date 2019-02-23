@@ -1,11 +1,11 @@
 ﻿using Microsoft.AspNetCore.Http;
 using System;
-using System.Collections.Generic;
 using System.Net;
 
 namespace Projeto.Livaria.Api.Models
 {
     /// <summary>
+    /// Author Eduardo Sampaio
     /// Default Response WebApi
     /// </summary>
     public class ResponseHandler
@@ -48,7 +48,7 @@ namespace Projeto.Livaria.Api.Models
         }
 
         /// <summary>
-        /// Build Response 
+        /// Build Response
         /// </summary>
         /// <param name="apiVersion"></param>
         /// <param name="messages"></param>

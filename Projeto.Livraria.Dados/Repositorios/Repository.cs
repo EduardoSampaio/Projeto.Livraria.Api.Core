@@ -6,8 +6,8 @@ using System.Linq;
 
 namespace Projeto.Livraria.Dados.Repositorios
 {
-    public class Repositorio<TEntity, ID> : IRepositorio<TEntity, ID> 
-        where TEntity :class where ID : struct
+    public class Repositorio<TEntity, ID> : IRepositorio<TEntity, ID>
+        where TEntity : class where ID : struct
     {
         protected readonly MySqlContext Db;
 
